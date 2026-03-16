@@ -1,0 +1,13 @@
+{
+  "name": "json-rpc-mock",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal JSON-RPC mock endpoint for error handling tests",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
