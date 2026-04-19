@@ -1,21 +1,21 @@
 # json-rpc-mock
 
-JSON-RPCのエラーハンドリング確認用の最小モックサーバーです。Node.js標準ライブラリのみを使うため、`npm install`は不要です。
+This is a minimal mock server for checking JSON-RPC error handling. It uses only the Node.js standard library, so `npm install` is not required.
 
-## 起動
+## Start
 
 ```bash
 npm start
 ```
 
-デフォルトでは `http://127.0.0.1:3000/` で待ち受けます。必要なら `PORT` と `HOST` を環境変数で変更できます。
+By default, the server listens on `http://127.0.0.1:3000/`. If needed, you can change `PORT` and `HOST` with environment variables.
 
-## エンドポイント
+## Endpoints
 
-- `POST /` JSON-RPC 2.0 リクエスト受付
-- `GET /health` ヘルスチェック
+- `POST /` Accepts JSON-RPC 2.0 requests
+- `GET /health` Health check
 
-## エラー再現方法
+## How to reproduce errors
 
 ### -32700 Parse Error
 
@@ -49,7 +49,7 @@ curl -s http://127.0.0.1:3000/ \
   -d '{"jsonrpc":"2.0","method":"mock.invalid_params","params":{},"id":1}'
 ```
 
-`mock.invalid_params` は `params.reason` に文字列を渡すと成功レスポンスになります。
+`mock.invalid_params` returns a successful response when a string is passed in `params.reason`.
 
 ### -32603 Internal Error
 
@@ -75,7 +75,7 @@ curl -s http://127.0.0.1:3000/ \
   -d '{"jsonrpc":"2.0","method":"mock.server_error","id":1}'
 ```
 
-## 疎通確認用の成功レスポンス
+## Successful response for connectivity check
 
 ```bash
 curl -s http://127.0.0.1:3000/ \
